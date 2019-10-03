@@ -1,10 +1,7 @@
 package me.study.eatgo.interfaces;
 
 import me.study.eatgo.application.RestaurantService;
-import me.study.eatgo.domain.MenuItem;
-import me.study.eatgo.domain.MenuItemRepository;
 import me.study.eatgo.domain.Restaurant;
-import me.study.eatgo.domain.RestaurantRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
