@@ -30,6 +30,7 @@ public class RestaurantRepositoryImpl implements RestaurantRepository {
 
     @Override
     public Restaurant save(Restaurant restaurant) {
-        return null;
+        restaurants.add(restaurant);
+        return restaurant;
     }
 }
