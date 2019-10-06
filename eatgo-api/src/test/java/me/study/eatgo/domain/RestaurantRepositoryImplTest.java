@@ -16,6 +16,8 @@ public class RestaurantRepositoryImplTest {
         Restaurant restaurant = new Restaurant("BeRyong", "Seoul");
         repository.save(restaurant);
 
+        assertThat(restaurant.getId(), is(1234L));
+
         int newCount = repository.findAll().size();
 
         assertThat(newCount - oldCount, is(1));
