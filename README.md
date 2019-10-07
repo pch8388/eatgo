@@ -14,3 +14,6 @@
 
 #webpack
 - npm install --save-dev webpack webpack-cli webpack-dev-server
+
+#CROS
+- Spring Controller -> @CrossOrigin 추가
