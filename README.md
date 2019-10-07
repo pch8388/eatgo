@@ -9,3 +9,8 @@
 - @GeneratedValue - key 자동 생성 (@Id와 함께 쓰임)
 - CrudRepository<엔티티클래스, 키> 를 extends 한 interface 만 정의하면 됨
 
+#Node Js
+- npm init
+
+#webpack
+- npm install --save-dev webpack webpack-cli webpack-dev-server
