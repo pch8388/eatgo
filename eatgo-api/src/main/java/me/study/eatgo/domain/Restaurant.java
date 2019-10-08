@@ -63,6 +63,11 @@ public class Restaurant {
         menuItems.add(menuItem);
     }
 
+    public void updateInformation(String name, String address) {
+        this.name = name;
+        this.address = address;
+    }
+
     public void setMenuItems(List<MenuItem> menuItems) {
         for (MenuItem menuItem : menuItems) {
             addMenuItem(menuItem);
