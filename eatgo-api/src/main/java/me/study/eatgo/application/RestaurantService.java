@@ -40,7 +40,8 @@ public class RestaurantService {
         return restaurantRepository.save(restaurant);
     }
 
-    public void updateRestaurant(Long id, String name, String address) {
+    public Restaurant updateRestaurant(Long id, String name, String address) {
         // TODO : update
+        return null;
     }
 }

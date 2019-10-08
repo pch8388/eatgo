@@ -88,4 +88,13 @@ public class RestaurantServiceTest {
 
         assertThat(created.getId(), is(1234L));
     }
+
+    @Test
+    public void updateRestaurant() {
+        Restaurant restaurant = new Restaurant(1004L, "Bob zip", "Seoul");
+
+        Restaurant updated = restaurantService.updateRestaurant(1004L, "Sool zip", "Busan");
+
+        assertThat(updated.getName(), is("Sool zip"));
+    }
 }
