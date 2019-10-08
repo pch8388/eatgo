@@ -8,6 +8,8 @@
 - @Id - key 로 쓰일 필드
 - @GeneratedValue - key 자동 생성 (@Id와 함께 쓰임)
 - CrudRepository<엔티티클래스, 키> 를 extends 한 interface 만 정의하면 됨
+- Entity update -> @Transactional => select - update 하면 select 해 온 객체를 update함
+- Transaction 범위를 벗어날 때, 업데이트를 한다.
 
 #Node Js
 - npm init
