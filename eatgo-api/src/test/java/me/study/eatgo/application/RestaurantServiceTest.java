@@ -99,5 +99,6 @@ public class RestaurantServiceTest {
             1004L, "Sool zip", "Busan");
 
         assertThat(restaurant.getName(), is("Sool zip"));
+        assertThat(restaurant.getAddress(), is("Busan"));
     }
 }

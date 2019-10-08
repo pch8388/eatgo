@@ -41,7 +41,10 @@ public class RestaurantService {
     }
 
     public Restaurant updateRestaurant(Long id, String name, String address) {
-        Restaurant restaurant = new Restaurant(id, name, address);
+        Restaurant restaurant = restaurantRepository.findById(id).orElse(null);
+
+        restaurant.updateInformation(name, address);
+
         return restaurant;
     }
 }
