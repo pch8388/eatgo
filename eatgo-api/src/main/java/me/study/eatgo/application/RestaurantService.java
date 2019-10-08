@@ -41,7 +41,7 @@ public class RestaurantService {
     }
 
     public Restaurant updateRestaurant(Long id, String name, String address) {
-        // TODO : update
-        return null;
+        Restaurant restaurant = new Restaurant(id, name, address);
+        return restaurant;
     }
 }
