@@ -78,6 +78,12 @@ public class RestaurantControllerTest {
 
     @Test
     public void create() throws Exception {
+        given(restaurantService.addRestaurant(any())).will(invocation -> {
+            Restaurant restaurant = invocation.getArgument(0);
+            return new Restaurant(1234L, restaurant.getName(),
+                restaurant.getAddress());
+        });
+
         mvc.perform(post("/restaurants")
             .contentType(MediaType.APPLICATION_JSON)
             .content("{\"name\":\"Beryong\", \"address\":\"Busan\"}"))
