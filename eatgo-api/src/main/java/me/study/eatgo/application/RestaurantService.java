@@ -39,4 +39,8 @@ public class RestaurantService {
     public Restaurant addRestaurant(Restaurant restaurant) {
         return restaurantRepository.save(restaurant);
     }
+
+    public void updateRestaurant(Long id, String name, String address) {
+        // TODO : update
+    }
 }

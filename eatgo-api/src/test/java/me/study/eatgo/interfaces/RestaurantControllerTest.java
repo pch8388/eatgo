@@ -95,5 +95,6 @@ public class RestaurantControllerTest {
                 .content("{\"name\":\"JOKER Bar\", \"address\":\"Busan\"}"))
             .andExpect(status().isOk());
 
+        verify(restaurantService).updateRestaurant(1004L, "JOKER Bar", "Busan");
     }
 }
