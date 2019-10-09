@@ -13,6 +13,7 @@ import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import static org.hamcrest.core.StringContains.containsString;
@@ -35,7 +36,11 @@ public class RestaurantControllerTest {
     @Test
     public void list() throws Exception {
         List<Restaurant> restaurants = new ArrayList<>();
-        restaurants.add(new Restaurant(1004L, "JOKER House", "Seoul"));
+        restaurants.add(Restaurant.builder()
+            .id(1004L)
+            .name("JOKER House")
+            .address("Seoul")
+            .build());
 
         given(restaurantService.getRestaurants()).willReturn(restaurants);
 
@@ -50,10 +55,23 @@ public class RestaurantControllerTest {
 
     @Test
     public void detail() throws Exception {
-        Restaurant restaurant1 = new Restaurant(1004L, "JOKER House", "Seoul");
-        restaurant1.addMenuItem(new MenuItem("Kimchi"));
+        Restaurant restaurant1 = Restaurant.builder()
+            .id(1004L)
+            .name("JOKER House")
+            .address("Seoul")
+            .build();
 
-        Restaurant restaurant2 = new Restaurant(2020L, "Cyber Food", "Seoul");
+        MenuItem menuItem = MenuItem.builder()
+            .name("Kimchi")
+            .build();
+
+        restaurant1.setMenuItems(Arrays.asList(menuItem));
+
+        Restaurant restaurant2 = Restaurant.builder()
+            .id(2020L)
+            .name("Cyber Food")
+            .address("Seoul")
+            .build();
 
         given(restaurantService.getRestaurant(1004L)).willReturn(restaurant1);
         given(restaurantService.getRestaurant(2020L)).willReturn(restaurant2);
@@ -77,11 +95,14 @@ public class RestaurantControllerTest {
     }
 
     @Test
-    public void create() throws Exception {
+    public void createWithValidData() throws Exception {
         given(restaurantService.addRestaurant(any())).will(invocation -> {
             Restaurant restaurant = invocation.getArgument(0);
-            return new Restaurant(1234L, restaurant.getName(),
-                restaurant.getAddress());
+            return Restaurant.builder()
+                .id(1234L)
+                .name(restaurant.getName())
+                .address(restaurant.getAddress())
+                .build();
         });
 
         mvc.perform(post("/restaurants")
@@ -95,12 +116,28 @@ public class RestaurantControllerTest {
     }
 
     @Test
-    public void update() throws Exception {
+    public void createWithInvalidData() throws Exception {
+        mvc.perform(post("/restaurants")
+            .contentType(MediaType.APPLICATION_JSON)
+            .content("{\"name\":\"\", \"address\":\"\"}"))
+            .andExpect(status().isBadRequest());
+    }
+
+    @Test
+    public void updateWithValidData() throws Exception {
         mvc.perform(patch("/restaurants/1004")
                 .contentType(MediaType.APPLICATION_JSON)
                 .content("{\"name\":\"JOKER Bar\", \"address\":\"Busan\"}"))
             .andExpect(status().isOk());
 
         verify(restaurantService).updateRestaurant(1004L, "JOKER Bar", "Busan");
+    }
+
+    @Test
+    public void updateWithInvalidData() throws Exception {
+        mvc.perform(patch("/restaurants/1004")
+            .contentType(MediaType.APPLICATION_JSON)
+            .content("{\"name\":\"\", \"address\":\"\"}"))
+            .andExpect(status().isBadRequest());
     }
 }
