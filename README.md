@@ -25,3 +25,10 @@
 - @Setter, @Getter 
 - @Builder : 빌더 패턴
 - @NoArgsConstructor : 디폴트 생성자를 만들어 줌
+
+#Validation
+- @NotNull, @NotEmpty, @Size(max=10)
+- @Valid
+- 400 Bad Request - 사용자가 입력을 잘못 했을경우
+- 간단한 경우 valid, invalid 두개 정도의 테스트를 함
+- 복잡한 검증이 필요할 경우 테스트를 여러개로 만들어야 함
