@@ -1,5 +1,7 @@
 package me.study.eatgo.domain;
 
+import lombok.Getter;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -8,6 +10,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Entity
+@Getter
 public class Restaurant {
 
     @Id
@@ -39,24 +42,8 @@ public class Restaurant {
         this.id = id;
     }
 
-    public Long getId() {
-        return id;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public String getAddress() {
-        return address;
-    }
-
     public String getInformation() {
         return name  + " in " + address;
-    }
-
-    public List<MenuItem> getMenuItems() {
-        return menuItems;
     }
 
     public void addMenuItem(MenuItem menuItem) {
