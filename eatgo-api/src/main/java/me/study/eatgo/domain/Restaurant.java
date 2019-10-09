@@ -1,6 +1,6 @@
 package me.study.eatgo.domain;
 
-import lombok.Getter;
+import lombok.*;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -11,6 +11,9 @@ import java.util.List;
 
 @Entity
 @Getter
+@Builder
+@NoArgsConstructor
+@AllArgsConstructor
 public class Restaurant {
 
     @Id
@@ -23,9 +26,6 @@ public class Restaurant {
 
     @Transient
     private List<MenuItem> menuItems = new ArrayList<>();
-
-    public Restaurant() {
-    }
 
     public Restaurant(String name, String address) {
         this.name = name;
