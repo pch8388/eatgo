@@ -18,6 +18,7 @@ public class Restaurant {
 
     @Id
     @GeneratedValue
+    @Setter
     private Long id;
 
     private String name;
@@ -25,39 +26,18 @@ public class Restaurant {
     private String address;
 
     @Transient
-    private List<MenuItem> menuItems = new ArrayList<>();
-
-    public Restaurant(String name, String address) {
-        this.name = name;
-        this.address = address;
-    }
-
-    public Restaurant(Long id, String name, String address) {
-        this.id = id;
-        this.name = name;
-        this.address = address;
-    }
-
-    public void setId(long id) {
-        this.id = id;
-    }
+    private List<MenuItem> menuItems;
 
     public String getInformation() {
         return name  + " in " + address;
     }
 
-    public void addMenuItem(MenuItem menuItem) {
-        menuItems.add(menuItem);
+    public void setMenuItems(List<MenuItem> menuItems) {
+        this.menuItems = new ArrayList<>(menuItems);
     }
 
     public void updateInformation(String name, String address) {
         this.name = name;
         this.address = address;
-    }
-
-    public void setMenuItems(List<MenuItem> menuItems) {
-        for (MenuItem menuItem : menuItems) {
-            addMenuItem(menuItem);
-        }
     }
 }
