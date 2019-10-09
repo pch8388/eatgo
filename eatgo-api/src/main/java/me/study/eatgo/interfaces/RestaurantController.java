@@ -44,7 +44,7 @@ public class RestaurantController {
 
     @PatchMapping("/restaurants/{id}")
     public String update(@PathVariable("id") Long id,
-                        @RequestBody Restaurant resource) {
+                        @Valid @RequestBody Restaurant resource) {
 
         String name = resource.getName();
         String address = resource.getAddress();
