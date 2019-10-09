@@ -23,4 +23,5 @@
 #Lombok
 - 어노테이션을 붙이면 특정한 코드를 만들어주는 역할
 - @Setter, @Getter 
-- @Builder
+- @Builder : 빌더 패턴
+- @NoArgsConstructor : 디폴트 생성자를 만들어 줌
