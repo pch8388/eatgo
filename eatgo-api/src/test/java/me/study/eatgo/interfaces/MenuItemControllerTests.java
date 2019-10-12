@@ -11,6 +11,7 @@ import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
 
 import static org.mockito.ArgumentMatchers.any;
+import static org.mockito.ArgumentMatchers.eq;
 import static org.mockito.Mockito.verify;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.patch;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
@@ -27,11 +28,11 @@ public class MenuItemControllerTests {
 
     @Test
     public void bulkUpdate() throws Exception {
-        mvc.perform(patch("/restaurants/1/menuitems")
+        mvc.perform(patch("/restaurants/12/menuitems")
             .contentType(MediaType.APPLICATION_JSON)
             .content("[]"))
             .andExpect(status().isOk());
 
-        verify(menuItemService).bulkUpdate(any());
+        verify(menuItemService).bulkUpdate(eq(12L), any());
     }
 }

@@ -8,7 +8,7 @@ import java.util.List;
 @Service
 public class MenuItemService {
 
-    public void bulkUpdate(List<MenuItem> menuItems) {
+    public void bulkUpdate(Long restaurantId, List<MenuItem> menuItems) {
         //TODO : bulk update
     }
 
