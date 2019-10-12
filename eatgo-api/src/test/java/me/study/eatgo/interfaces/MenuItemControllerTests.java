@@ -20,7 +20,7 @@ public class MenuItemControllerTests {
 
     @Test
     public void bulkUpdate() throws Exception {
-        mvc.perform(patch("/restaurants/1004")
+        mvc.perform(patch("/restaurants/1/menuitems")
             .contentType(MediaType.APPLICATION_JSON)
             .content("[]"))
             .andExpect(status().isOk());
