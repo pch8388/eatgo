@@ -36,3 +36,7 @@
 # Error
 - @ControllerAdvice : 예외 처리
 - @ResponseStatus(HttpStatus.NotFound) : 404 를 돌려줌
+
+# Bulk Update
+- 한번에 여러개를 수정
+- PATCH /restaurants/{id}/menuitems => 특정 레스토랑의 메뉴를 변경
