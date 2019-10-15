@@ -10,8 +10,9 @@
 - CrudRepository<엔티티클래스, 키> 를 extends 한 interface 만 정의하면 됨
 - Entity update -> @Transactional => select - update 하면 select 해 온 객체를 update 함
 - Transaction 범위를 벗어날 때, 업데이트를 한다.
-- @Transient - 해당 필드를 저장하지 않음
+- @Transient - 해당 필드를 저장하지 않음(DB에)
 - @JsonInclude(JsonInclude.Include.NON_NULL) -> 해당 필드가 null 이면 표시하지 않음
+- @JsonInclude(JsonInclude.Include.NON_DEFAULT) -> 해당 필드가 default 값이 아닐때만 출력
 
 # Node Js
 ``` npm init ```
