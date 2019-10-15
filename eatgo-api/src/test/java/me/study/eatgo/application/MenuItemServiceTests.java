@@ -1,0 +1,41 @@
+package me.study.eatgo.application;
+
+import me.study.eatgo.domain.MenuItem;
+import me.study.eatgo.domain.MenuItemRepository;
+import org.junit.Before;
+import org.junit.Test;
+import org.mockito.Mock;
+import org.mockito.MockitoAnnotations;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import static org.junit.Assert.*;
+import static org.mockito.ArgumentMatchers.any;
+import static org.mockito.Mockito.verify;
+
+public class MenuItemServiceTests {
+
+    private MenuItemService menuItemService = new MenuItemService();
+
+    @Mock
+    private MenuItemRepository menuItemRepository;
+
+    @Before
+    public void setUp() {
+        MockitoAnnotations.initMocks(this);
+    }
+
+    @Test
+    public void bulkUpdate() {
+        List<MenuItem> menuItems = new ArrayList<>();
+
+        menuItems.add(MenuItem.builder()
+                .name("Kimchi")
+                .build());
+
+        menuItemService.bulkUpdate(1L, menuItems);
+
+        verify(menuItemRepository).save(any());
+    }
+}
