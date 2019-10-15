@@ -10,13 +10,12 @@ import org.mockito.MockitoAnnotations;
 import java.util.ArrayList;
 import java.util.List;
 
-import static org.junit.Assert.*;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.verify;
 
 public class MenuItemServiceTests {
 
-    private MenuItemService menuItemService = new MenuItemService();
+    private MenuItemService menuItemService;
 
     @Mock
     private MenuItemRepository menuItemRepository;
@@ -24,6 +23,8 @@ public class MenuItemServiceTests {
     @Before
     public void setUp() {
         MockitoAnnotations.initMocks(this);
+
+        menuItemService = new MenuItemService(menuItemRepository);
     }
 
     @Test

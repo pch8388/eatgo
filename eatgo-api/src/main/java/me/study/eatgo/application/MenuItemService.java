@@ -10,8 +10,12 @@ import java.util.List;
 @Service
 public class MenuItemService {
 
-    @Autowired
     private MenuItemRepository menuItemRepository;
+
+    @Autowired
+    public MenuItemService(MenuItemRepository menuItemRepository) {
+        this.menuItemRepository = menuItemRepository;
+    }
 
     public void bulkUpdate(Long restaurantId, List<MenuItem> menuItems) {
         MenuItem menuItem = MenuItem.builder().build();
