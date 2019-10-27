@@ -43,3 +43,16 @@
 # Bulk Update
 - 한번에 여러개를 수정
 - PATCH /restaurants/{id}/menuitems => 특정 레스토랑의 메뉴를 변경
+
+# 프로젝트 분리
+- 프로젝트 분리시, 스프링 부트 2.0 이상에서는 인식시킬 공통 모듈에 build.gradle 설정에
+    ```
+    jar {
+        enabled = true
+    }
+    
+    bootJar {
+        enabled = false
+    } 
+    ```
+    를 추가해야 함
