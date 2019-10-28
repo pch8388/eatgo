@@ -62,37 +62,14 @@ public class RestaurantControllerTest {
             .address("Seoul")
             .build();
 
-        MenuItem menuItem = MenuItem.builder()
-            .name("Kimchi")
-            .build();
-
-        restaurant1.setMenuItems(Arrays.asList(menuItem));
-
-        Restaurant restaurant2 = Restaurant.builder()
-            .id(2020L)
-            .name("Cyber Food")
-            .address("Seoul")
-            .build();
-
         given(restaurantService.getRestaurant(1004L)).willReturn(restaurant1);
-        given(restaurantService.getRestaurant(2020L)).willReturn(restaurant2);
 
         mvc.perform(get("/restaurants/1004"))
             .andExpect(status().isOk())
             .andExpect(content().string(
                 containsString("\"id\":1004")))
             .andExpect(content().string(
-                containsString("\"name\":\"JOKER House\"")))
-            .andExpect(content().string(
-                containsString("Kimchi")
-            ));
-
-        mvc.perform(get("/restaurants/2020"))
-            .andExpect(status().isOk())
-            .andExpect(content().string(
-                containsString("\"id\":2020")))
-            .andExpect(content().string(
-                containsString("\"name\":\"Cyber Food\"")));
+                containsString("\"name\":\"JOKER House\"")));
     }
 
     @Test
