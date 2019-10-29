@@ -47,6 +47,7 @@
 # 프로젝트 분리
 - 프로젝트 분리시, 스프링 부트 2.0 이상에서는 인식시킬 공통 모듈에 build.gradle 설정에
     ```
+    # jar file로 추가
     jar {
         enabled = true
     }
@@ -56,3 +57,11 @@
     } 
     ```
     를 추가해야 함
+
+# gradle
+```
+./gradlew build
+./gradlew clean test
+```
+
+- test 설정을 gradle 로 하고 전체 모듈 테스트를 인텔리제이와 같이 진행하면 intellij gui 로 같이 확인가능
