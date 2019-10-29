@@ -1,13 +1,8 @@
 [
   {
-    "id" : 2,
-    "name" : "Kimchi"
+    "name" : "Egg"
   },
   {
-    "id" : 3,
-    "destroy" : true
-  },
-  {
-    "name" : "Gukbob"
+    "name" : "Bread"
   }
 ]
