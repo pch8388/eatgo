@@ -2,7 +2,6 @@ package me.study.eatgo.application;
 
 import me.study.eatgo.domain.Category;
 import me.study.eatgo.domain.CategoryRepository;
-import me.study.eatgo.domain.Region;
 import org.junit.Before;
 import org.junit.Test;
 import org.mockito.Mock;

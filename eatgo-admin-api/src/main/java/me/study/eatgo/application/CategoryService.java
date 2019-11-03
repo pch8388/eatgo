@@ -2,8 +2,6 @@ package me.study.eatgo.application;
 
 import me.study.eatgo.domain.Category;
 import me.study.eatgo.domain.CategoryRepository;
-import me.study.eatgo.domain.Region;
-import me.study.eatgo.domain.RegionRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
