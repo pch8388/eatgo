@@ -22,6 +22,7 @@ public class RegionService {
     }
 
     public Region addRegion(String name) {
-        return null;
+        Region region = Region.builder().name(name).build();
+        return region;
     }
 }
