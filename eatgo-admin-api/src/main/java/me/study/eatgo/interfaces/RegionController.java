@@ -32,9 +32,9 @@ public class RegionController {
     ) throws URISyntaxException {
 
         String name = resource.getName();
-        regionService.addRegion(name);
+        Region region = regionService.addRegion(name);
 
-        String url = "/regions/1";
+        String url = "/regions/" + region.getId();
         return ResponseEntity.created(new URI(url)).body("{}");
     }
 }
