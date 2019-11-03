@@ -31,7 +31,7 @@ public class CategoryServiceTests {
     }
 
     @Test
-    public void getRegions() {
+    public void getCategories() {
         List<Category> mockCategory = new ArrayList<>();
         mockCategory.add(Category.builder().name("Korean Food").build());
 
@@ -44,7 +44,7 @@ public class CategoryServiceTests {
     }
 
     @Test
-    public void addRegion() {
+    public void addCategory() {
         Category category = categoryService.addCategory("Korean Food");
 
         verify(categoryRepository).save(any());
