@@ -1,6 +1,5 @@
 package me.study.eatgo.application;
 
-import me.study.eatgo.application.RestaurantService;
 import me.study.eatgo.domain.*;
 import org.junit.Before;
 import org.junit.Test;
@@ -68,7 +67,8 @@ public class RestaurantServiceTest {
 
     @Test
     public void getRestaurants() {
-        List<Restaurant> restaurants = restaurantService.getRestaurants();
+        String region = "Seoul";
+        List<Restaurant> restaurants = restaurantService.getRestaurants(region);
 
         Restaurant restaurant = restaurants.get(0);
         assertThat(restaurant.getId(), is(1004L));

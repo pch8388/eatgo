@@ -23,7 +23,8 @@ public class RestaurantService {
         this.reviewRepository = reviewRepository;
     }
 
-    public List<Restaurant> getRestaurants() {
+    public List<Restaurant> getRestaurants(String region) {
+        //TODO : region으로 필터링
         return restaurantRepository.findAll();
     }
 
