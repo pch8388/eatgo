@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.net.URI;
@@ -26,8 +27,11 @@ public class RegionController {
     }
 
     @PostMapping("/regions")
-    public ResponseEntity<?> create() throws URISyntaxException {
-        String name = "Seoul";
+    public ResponseEntity<?> create(
+        @RequestBody Region resource
+    ) throws URISyntaxException {
+
+        String name = resource.getName();
         regionService.addRegion(name);
 
         String url = "/regions/1";
