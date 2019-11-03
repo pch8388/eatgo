@@ -27,7 +27,8 @@ public class RegionController {
 
     @PostMapping("/regions")
     public ResponseEntity<?> create() throws URISyntaxException {
-        // TODO : 지역 생성
+        String name = "Seoul";
+        regionService.addRegion(name);
 
         String url = "/regions/1";
         return ResponseEntity.created(new URI(url)).body("{}");

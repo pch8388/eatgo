@@ -20,4 +20,8 @@ public class RegionService {
     public List<Region> getRegions() {
         return regionRepository.findAll();
     }
+
+    public Region addRegion(String name) {
+        return null;
+    }
 }

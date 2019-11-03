@@ -15,6 +15,7 @@ import java.util.List;
 
 import static org.hamcrest.core.StringContains.containsString;
 import static org.mockito.BDDMockito.given;
+import static org.mockito.Mockito.verify;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
@@ -44,9 +45,14 @@ public class RegionControllerTests {
 
     @Test
     public void create() throws Exception {
+        Region region = Region.builder().name("Seoul").build();
+        given(regionService.addRegion("Seoul")).willReturn(region);
+
         mvc.perform(post("/regions")
             .content("{\"name\":\"Seoul\"}"))
             .andExpect(status().isCreated())
             .andExpect(content().string("{}"));
+
+        verify(regionService).addRegion("Seoul");
     }
 }
