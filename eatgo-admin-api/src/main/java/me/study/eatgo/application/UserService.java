@@ -1,22 +1,23 @@
 package me.study.eatgo.application;
 
 import me.study.eatgo.domain.User;
+import me.study.eatgo.domain.UserRepository;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
+import javax.transaction.Transactional;
 import java.util.List;
 
 @Service
+@Transactional
 public class UserService {
 
-    public List<User> getUsers() {
-        List<User> users = new ArrayList<>();
-        users.add(User.builder()
-            .email("tester@example.com")
-            .name("테스터")
-            .level(1L)
-            .build());
+    private UserRepository userRepository;
 
-        return users;
+    public UserService(UserRepository userRepository) {
+        this.userRepository = userRepository;
+    }
+
+    public List<User> getUsers() {
+        return userRepository.findAll();
     }
 }
