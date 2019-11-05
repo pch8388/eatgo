@@ -16,6 +16,7 @@ import java.util.List;
 
 import static org.hamcrest.core.StringContains.containsString;
 import static org.mockito.BDDMockito.given;
+import static org.mockito.Mockito.verify;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
@@ -53,5 +54,9 @@ public class UserControllerTests {
             .contentType(MediaType.APPLICATION_JSON)
             .content("{\"email\":\"admin@example.com\",\"name\":\"Administrator\"}"))
             .andExpect(status().isCreated());
+
+        String email = "admin@example.com";
+        String name = "Administrator";
+        verify(userService).addUser(email, name);
     }
 }
