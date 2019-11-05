@@ -30,4 +30,8 @@ public class User {
 
     @NotNull
     private Long level;
+
+    public boolean isAdmin() {
+        return level >= 100;
+    }
 }
