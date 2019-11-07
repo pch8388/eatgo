@@ -22,6 +22,10 @@ public class UserService {
     }
 
     public User addUser(String email, String name) {
-        return null;
+        User user =  User.builder()
+                .email(email)
+                .name(name)
+                .build();
+        return userRepository.save(user);
     }
 }
