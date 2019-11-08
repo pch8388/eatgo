@@ -40,4 +40,8 @@ public class UserService {
 
         return user;
     }
+
+    public void deactiveUser(Long id) {
+        //TODO :
+    }
 }
