@@ -103,8 +103,11 @@ public class UserServiceTests {
 
         given(userRepository.findById(id)).willReturn(Optional.of(mockUser));
 
-        userService.deactiveUser(1004L);
+        User user = userService.deactiveUser(1004L);
 
         verify(userRepository).findById(1004L);
+
+        assertThat(user.isAdmin(), is(false));
+        assertThat(user.isActive(), is(false));
     }
 }
