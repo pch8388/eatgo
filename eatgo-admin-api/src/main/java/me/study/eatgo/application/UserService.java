@@ -42,6 +42,7 @@ public class UserService {
     }
 
     public void deactiveUser(Long id) {
-        //TODO :
+        User user = userRepository.findById(id)
+            .orElseThrow(() -> new UserNotFoundException(id));
     }
 }
