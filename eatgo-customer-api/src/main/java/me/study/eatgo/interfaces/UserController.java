@@ -4,6 +4,7 @@ import me.study.eatgo.domain.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.net.URI;
@@ -16,17 +17,12 @@ public class UserController {
     private UserService userService;
 
     @PostMapping("/users")
-    public ResponseEntity<?> create() throws URISyntaxException {
-        String email = "tester@example.com";
-        String name = "Tester";
-        String password = "test";
-
-//        User user = User.builder()
-//                .id(1004L)
-//                .email(email)
-//                .name(name)
-//                .password(password)
-//                .build();
+    public ResponseEntity<?> create(
+        @RequestBody User resource
+    ) throws URISyntaxException {
+        String email = resource.getEmail();
+        String name = resource.getName();
+        String password = resource.getPassword();
 
         User user = userService.registerUser(email, name, password);
 
