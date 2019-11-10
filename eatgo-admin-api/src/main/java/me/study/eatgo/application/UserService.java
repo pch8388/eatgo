@@ -26,6 +26,7 @@ public class UserService {
         User user =  User.builder()
                 .email(email)
                 .name(name)
+                .level(1L)
                 .build();
         return userRepository.save(user);
     }
@@ -38,6 +39,14 @@ public class UserService {
         user.setName(name);
         user.setLevel(level);
 
+        return user;
+    }
+
+    public User deactiveUser(Long id) {
+        User user = userRepository.findById(id)
+            .orElseThrow(() -> new UserNotFoundException(id));
+
+        user.deactivate();
         return user;
     }
 }
