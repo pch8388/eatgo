@@ -47,5 +47,8 @@ public class UserControllerTests {
             .content("{\"email\":\"tester@example.com\",\"name\":\"Tester\",\"password\":\"test\"}"))
             .andExpect(status().isCreated())
             .andExpect(header().string("location", "/users/1004"));
+
+        verify(userService).registerUser(
+            eq("tester@example.com"), eq("Tester"), eq("test"));
     }
 }
