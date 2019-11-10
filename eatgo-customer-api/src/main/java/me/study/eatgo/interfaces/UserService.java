@@ -1,6 +1,7 @@
 package me.study.eatgo.interfaces;
 
 import me.study.eatgo.domain.User;
+import me.study.eatgo.domain.UserRepository;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
@@ -9,9 +10,19 @@ import javax.transaction.Transactional;
 @Transactional
 public class UserService {
 
-    public User registerUser(String email, String name, String password) {
-        //TODO : 구현 필요
+    private final UserRepository userRepository;
 
-        return null;
+    public UserService(UserRepository userRepository) {
+        this.userRepository = userRepository;
+    }
+
+    public User registerUser(String email, String name, String password) {
+        User user = User.builder()
+                .email(email)
+                .name(name)
+                .password(password)
+                .build();
+
+        return userRepository.save(user);
     }
 }
