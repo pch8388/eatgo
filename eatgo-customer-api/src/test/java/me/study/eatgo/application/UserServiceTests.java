@@ -50,7 +50,7 @@ public class UserServiceTests {
 
         userService.registerUser(email, name, password);
 
-//        verify(userRepository, never()).save(any());
+        verify(userRepository, never()).save(any());
     }
 
 }
