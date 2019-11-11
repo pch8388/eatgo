@@ -27,7 +27,7 @@ public class UserController {
 
         User user = userService.registerUser(email, name, password);
 
-        String url = "/users/1004";
+        String url = "/users/"+resource.getId();
         return ResponseEntity.created(new URI(url)).body("{}");
     }
 }
