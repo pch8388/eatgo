@@ -1,6 +1,6 @@
 package me.study.eatgo.interfaces;
 
-import me.study.eatgo.domain.Review;
+import me.study.eatgo.application.UserService;
 import me.study.eatgo.domain.User;
 import org.junit.Test;
 import org.junit.runner.RunWith;

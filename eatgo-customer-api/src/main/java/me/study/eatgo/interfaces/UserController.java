@@ -1,5 +1,6 @@
 package me.study.eatgo.interfaces;
 
+import me.study.eatgo.application.UserService;
 import me.study.eatgo.domain.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;

@@ -1,4 +1,4 @@
-package me.study.eatgo.interfaces;
+package me.study.eatgo.application;
 
 import me.study.eatgo.domain.User;
 import me.study.eatgo.domain.UserRepository;
@@ -21,6 +21,7 @@ public class UserService {
                 .email(email)
                 .name(name)
                 .password(password)
+                .level(1L)
                 .build();
 
         return userRepository.save(user);
