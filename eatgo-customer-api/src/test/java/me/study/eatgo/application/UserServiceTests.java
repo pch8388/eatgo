@@ -1,5 +1,6 @@
-package me.study.eatgo.interfaces;
+package me.study.eatgo.application;
 
+import me.study.eatgo.application.UserService;
 import me.study.eatgo.domain.UserRepository;
 import org.junit.Before;
 import org.junit.Test;

@@ -1,5 +1,6 @@
 package me.study.eatgo.interfaces;
 
+import me.study.eatgo.application.UserService;
 import me.study.eatgo.domain.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -26,7 +27,7 @@ public class UserController {
 
         User user = userService.registerUser(email, name, password);
 
-        String url = "/users/1004";
+        String url = "/users/"+user.getId();
         return ResponseEntity.created(new URI(url)).body("{}");
     }
 }
