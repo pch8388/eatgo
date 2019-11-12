@@ -26,7 +26,7 @@ public class SessionControllerTests {
     private UserService userService;
 
     @Test
-    public void create() throws Exception {
+    public void createWithValidAttributes() throws Exception {
         mvc.perform(post("/session")
                 .contentType(MediaType.APPLICATION_JSON)
                 .content("{\"email\":\"tester@example.com\",\"password\":\"test\"}"))
@@ -35,5 +35,15 @@ public class SessionControllerTests {
             .andExpect(content().string("{\"accessToken\":\"ACCESSTOKEN\"}"));
 
         verify(userService).authenticate(eq("tester@example.com"), eq("test"));
+    }
+
+    @Test
+    public void createWithInValidAttributes() throws Exception {
+        mvc.perform(post("/session")
+            .contentType(MediaType.APPLICATION_JSON)
+            .content("{\"email\":\"tester@example.com\",\"password\":\"x\"}"))
+            .andExpect(status().isBadRequest());
+
+        verify(userService).authenticate(eq("tester@example.com"), eq("x"));
     }
 }
