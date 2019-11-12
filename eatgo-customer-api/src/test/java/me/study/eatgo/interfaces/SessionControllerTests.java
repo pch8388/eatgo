@@ -1,5 +1,6 @@
 package me.study.eatgo.interfaces;
 
+import me.study.eatgo.application.EmailNotExistedException;
 import me.study.eatgo.application.PasswordWrongException;
 import me.study.eatgo.application.UserService;
 import org.junit.Test;
@@ -40,7 +41,20 @@ public class SessionControllerTests {
     }
 
     @Test
-    public void createWithInValidAttributes() throws Exception {
+    public void createWithNotExistedEmail() throws Exception {
+        given(userService.authenticate("x@example.com", "test"))
+            .willThrow(EmailNotExistedException.class);
+
+        mvc.perform(post("/session")
+            .contentType(MediaType.APPLICATION_JSON)
+            .content("{\"email\":\"x@example.com\",\"password\":\"test\"}"))
+            .andExpect(status().isBadRequest());
+
+        verify(userService).authenticate(eq("x@example.com"), eq("test"));
+    }
+
+    @Test
+    public void createWithWrongPassword() throws Exception {
         given(userService.authenticate("tester@example.com", "x"))
             .willThrow(PasswordWrongException.class);
 
