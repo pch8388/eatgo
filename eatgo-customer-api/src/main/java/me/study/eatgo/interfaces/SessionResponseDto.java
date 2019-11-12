@@ -1,11 +1,11 @@
-package me.study.eatgo.application;
+package me.study.eatgo.interfaces;
 
 import lombok.Builder;
 import lombok.Data;
 
 @Data
 @Builder
-public class SessionDto {
+public class SessionResponseDto {
 
     private String accessToken;
 
