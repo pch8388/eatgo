@@ -25,9 +25,11 @@
 
 # Lombok
 - 어노테이션을 붙이면 특정한 코드를 만들어주는 역할
+- @Entity
 - @Setter, @Getter 
 - @Builder : 빌더 패턴
 - @NoArgsConstructor : 디폴트 생성자를 만들어 줌
+- @Data : 순수한 data class  
 
 # Validation
 - @NotNull, @NotEmpty, @Size(max=10)
@@ -86,3 +88,6 @@ spring:
 
 ```
 - SPRING_PROFILES_ACTIVE=test 옵션을 gradle 실행시에 넣어줘서 profile 설정
+
+# Authentication
+- access token
