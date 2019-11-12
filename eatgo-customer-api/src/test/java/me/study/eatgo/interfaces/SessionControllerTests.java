@@ -24,7 +24,7 @@ public class SessionControllerTests {
                 .contentType(MediaType.APPLICATION_JSON)
                 .content("{\"email\":\"tester@example.com\",\"password\":\"test\"}"))
             .andExpect(status().isCreated())
-            .andExpect(header().string("location", "/users/1004"))
+            .andExpect(header().string("location", "/session"))
             .andExpect(content().string("{\"accessToken\":\"ACCESSTOKEN\"}"));
     }
 }
