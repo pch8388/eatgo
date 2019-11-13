@@ -102,4 +102,5 @@ spring:
   - signature : 데이터 혹은 토큰이 위변조 되지 않았음을 확인하는 서명
     - 데이터를 hashing , HMAC-SHA256 방식 사용
 - base64 url encoding 으로 인코딩 됨
+- <https://jwt.io/>
 
