@@ -91,3 +91,15 @@ spring:
 
 # Authentication
 - access token
+
+### JWT : JSON Web Tokens
+- token 을 json 형태로 다루는 표준
+- 3가지의 parts (header, payload, signature)
+  - header :  타입, 알고리즘 종류 
+  - payload : 실제 데이터 , 암호화 되지 않음, 
+    - Claims 라고 함 
+    - 너무 많은 정보를 담지 않는 것이 좋음(토큰의 유효기간등을 담는것이 좋음)
+  - signature : 데이터 혹은 토큰이 위변조 되지 않았음을 확인하는 서명
+    - 데이터를 hashing , HMAC-SHA256 방식 사용
+- base64 url encoding 으로 인코딩 됨
+
