@@ -6,6 +6,7 @@ import org.junit.Before;
 import org.junit.Test;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
+import org.springframework.security.crypto.password.PasswordEncoder;
 
 import java.util.Optional;
 
@@ -23,11 +24,14 @@ public class UserServiceTests {
     @Mock
     private UserRepository userRepository;
 
+    @Mock
+    private PasswordEncoder passwordEncoder;
+
     @Before
     public void setUp() {
         MockitoAnnotations.initMocks(this);
 
-        userService = new UserService(userRepository);
+        userService = new UserService(userRepository, passwordEncoder);
     }
 
     @Test
@@ -65,6 +69,8 @@ public class UserServiceTests {
         given(userRepository.findByEmail(email))
             .willReturn(Optional.of(mockUser));
 
+        given(passwordEncoder.matches(any(), any())).willReturn(true);
+
         User user = userService.authenticate(email, password);
 
         assertThat(user.getEmail(), is(email));
@@ -77,6 +83,23 @@ public class UserServiceTests {
 
         given(userRepository.findByEmail(email))
             .willReturn(Optional.empty());
+
+        User user = userService.authenticate(email, password);
+
+        assertThat(user.getEmail(), is(email));
+    }
+
+    @Test(expected = PasswordWrongException.class)
+    public void authenticateWithWrongPassword() {
+        String email = "tester@example.com";
+        String password = "x";
+
+        User mockUser = User.builder().email(email).build();
+
+        given(userRepository.findByEmail(email))
+            .willReturn(Optional.of(mockUser));
+
+        given(passwordEncoder.matches(any(), any())).willReturn(false);
 
         User user = userService.authenticate(email, password);
 
