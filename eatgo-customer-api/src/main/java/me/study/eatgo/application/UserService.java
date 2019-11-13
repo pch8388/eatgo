@@ -39,7 +39,7 @@ public class UserService {
     }
 
     public User authenticate(String email, String password) {
-        User user = userRepository.findByEmail(email).orElse(null);
-        return user;
+        return userRepository.findByEmail(email)
+            .orElseThrow(() -> new EmailNotExistedException(email));
     }
 }
