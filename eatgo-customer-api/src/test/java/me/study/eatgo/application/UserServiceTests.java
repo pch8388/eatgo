@@ -70,4 +70,16 @@ public class UserServiceTests {
         assertThat(user.getEmail(), is(email));
     }
 
+    @Test(expected = EmailNotExistedException.class)
+    public void authenticateWithNotExistEmail() {
+        String email = "x@example.com";
+        String password = "test";
+
+        given(userRepository.findByEmail(email))
+            .willReturn(Optional.empty());
+
+        User user = userService.authenticate(email, password);
+
+        assertThat(user.getEmail(), is(email));
+    }
 }
