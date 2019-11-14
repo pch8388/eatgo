@@ -104,3 +104,11 @@ spring:
 - base64 url encoding 으로 인코딩 됨
 - <https://jwt.io/>
 
+# application.yml
+```
+jwt:
+     secret: 12345678901234567890123456789012
+```
+```@Value("{jwt.secret}")```
+
+- secret key 를 자주 바꿔줌으로서 보안에 좀 더 안전하게 사용
