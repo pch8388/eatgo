@@ -120,4 +120,5 @@ jwt:
   - 모든 요청에 대해 분석 - Filter 추가
   - BasicAuthenticationFilter
   - AuthenticationToken : Spring 내부에서만 사용
-  - UsernamePasswordAuthenticationToken
+  - UsernamePasswordAuthenticationToken : AbstractAuthenticationToken 을 상속받아 구현 해둔 것, 필요하면 직접 상속받아 구현하면 됨
+  
