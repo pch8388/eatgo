@@ -112,3 +112,12 @@ jwt:
 ```@Value("{jwt.secret}")```
 
 - secret key 를 자주 바꿔줌으로서 보안에 좀 더 안전하게 사용
+
+# Stateless
+- 서버가 상태를 관리하지 않기 때문에 요청시마다 access token 을 전달 받아야 함
+  - http header 를 통해서..
+  - Authorization 이라는 Key 를 이용
+  - 모든 요청에 대해 분석 - Filter 추가
+  - BasicAuthenticationFilter
+  - AuthenticationToken : Spring 내부에서만 사용
+  - UsernamePasswordAuthenticationToken
