@@ -23,4 +23,11 @@ public class UserTests {
         assertThat(user.isActive(), is(false));
 
     }
+
+    @Test
+    public void restaurantOwner() {
+        User user = User.builder().level(1L).build();
+
+        assertThat(user.isRestaurantOwner(), is(false));
+    }
 }
