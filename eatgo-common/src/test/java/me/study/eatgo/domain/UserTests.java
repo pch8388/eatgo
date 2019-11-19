@@ -33,5 +33,6 @@ public class UserTests {
         user.setRestaurantId(1004L);
 
         assertThat(user.isRestaurantOwner(), is(true));
+        assertThat(user.getRestaurantId(), is(1004L));
     }
 }
