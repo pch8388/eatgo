@@ -33,7 +33,6 @@ public class User {
 
     private String password;
 
-    @Setter
     private Long restaurantId;
 
     public boolean isAdmin() {
@@ -48,7 +47,12 @@ public class User {
         level = 0L;
     }
 
+    public void setRestaurantId(Long restaurantId) {
+        this.level = 50L;
+        this.restaurantId = restaurantId;
+    }
+
     public boolean isRestaurantOwner() {
-        return false;
+        return level == 50L;
     }
 }
