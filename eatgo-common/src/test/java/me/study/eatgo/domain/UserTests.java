@@ -3,7 +3,7 @@ package me.study.eatgo.domain;
 import org.junit.Test;
 
 import static org.hamcrest.core.Is.is;
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertThat;
 
 public class UserTests {
 
@@ -22,5 +22,17 @@ public class UserTests {
         user.deactivate();
         assertThat(user.isActive(), is(false));
 
+    }
+
+    @Test
+    public void restaurantOwner() {
+        User user = User.builder().level(1L).build();
+
+        assertThat(user.isRestaurantOwner(), is(false));
+
+        user.setRestaurantId(1004L);
+
+        assertThat(user.isRestaurantOwner(), is(true));
+        assertThat(user.getRestaurantId(), is(1004L));
     }
 }
