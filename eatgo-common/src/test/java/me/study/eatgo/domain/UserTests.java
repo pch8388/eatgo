@@ -29,5 +29,9 @@ public class UserTests {
         User user = User.builder().level(1L).build();
 
         assertThat(user.isRestaurantOwner(), is(false));
+
+        user.setRestaurantId(1004L);
+
+        assertThat(user.isRestaurantOwner(), is(true));
     }
 }
