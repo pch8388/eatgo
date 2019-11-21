@@ -5,6 +5,7 @@ import me.study.eatgo.domain.ReservationRepository;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
+import java.util.List;
 
 @Service
 @Transactional
@@ -28,5 +29,9 @@ public class ReservationService {
             .build();
 
         return reservationRepository.save(reservation);
+    }
+
+    public List<Reservation> getReservations(Long restaurantId) {
+        return reservationRepository.findAllByRestaurantId(restaurantId);
     }
 }
