@@ -17,7 +17,7 @@ public class ReservationController {
         this.reservationService = reservationService;
     }
 
-    @GetMapping("/restaurants")
+    @GetMapping("/reservations")
     public List<Reservation> list(
         Authentication authentication
     ) {
